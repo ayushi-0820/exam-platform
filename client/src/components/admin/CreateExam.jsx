@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import API from '../../services/api';
-import Navbar from '../shared/Navbar';
+import Navbar from '../shared/navbar';
 import { CheckSquare, Square } from 'lucide-react';
 
 const CreateExam = () => {
