@@ -55,7 +55,7 @@ const Register = () => {
         <form onSubmit={handleSubmit}>
           <div style={{ marginBottom: '1.25rem' }}>
             <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: 'var(--text-secondary)', marginBottom: '6px' }}>Full Name</label>
-            <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Ayushi Kumar" />
+            <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Your Full Name" />
           </div>
           <div style={{ marginBottom: '1.25rem' }}>
             <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: 'var(--text-secondary)', marginBottom: '6px' }}>Email</label>
