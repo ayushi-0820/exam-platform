@@ -96,7 +96,11 @@ const ExamPage = () => {
     socketRef.current.on('webrtc-offer', async ({ offer, fromId }) => {
       const pc = new RTCPeerConnection({ iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] });
       peerConnectionRef.current = pc;
-      const stream = webcamRef.current?.srcObject;
+      let stream = webcamRef.current?.srcObject;
+      if (!stream) {
+        stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        if (webcamRef.current) webcamRef.current.srcObject = stream;
+      }
       if (stream) stream.getTracks().forEach(track => pc.addTrack(track, stream));
       pc.onicecandidate = (e) => {
         if (e.candidate) socketRef.current.emit('ice-candidate', { candidate: e.candidate, targetId: fromId });
