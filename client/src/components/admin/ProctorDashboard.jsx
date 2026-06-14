@@ -16,7 +16,10 @@ const ProctorDashboard = () => {
   };
 
   useEffect(() => {
-    socketRef.current = io(import.meta.env.VITE_API_URL);
+    socketRef.current = io(import.meta.env.VITE_API_URL, {
+      transports: ['websocket'],
+      upgrade: false
+    });
     socketRef.current.emit('proctor-join', { examId });
 
     socketRef.current.on('candidate-joined', ({ candidateId, candidateName }) => {

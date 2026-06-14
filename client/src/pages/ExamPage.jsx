@@ -85,7 +85,10 @@ const ExamPage = () => {
   useEffect(() => {
     if (!attemptId || !exam) return;
     if (socketRef.current?.connected) return;
-    socketRef.current = io(import.meta.env.VITE_API_URL);
+    socketRef.current = io(import.meta.env.VITE_API_URL, {
+      transports: ['websocket'],
+      upgrade: false
+    });
     socketRef.current.emit('candidate-join', {
       examId: id,
       candidateName: JSON.parse(localStorage.getItem('user'))?.name || 'Candidate'
